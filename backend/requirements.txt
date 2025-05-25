@@ -1,0 +1,13 @@
+Flask
+pandas
+matplotlib
+minio
+psycopg2-binary
+SQLAlchemy
+python-dotenv
+Flask-SQLAlchemy  # Facilita a integração SQLAlchemy com Flask
+Flask-Migrate     # Para migrações de schema do banco de dados
+Flask-JWT-Extended # Para JWT
+passlib           # Para hashing de senhas
+bcrypt            # Alternativa/dependência para passlib
+werkzeug          # Já é uma dependência do Flask, mas garantir a versão se necessário

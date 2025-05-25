@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Mobilidade Urbana - Teresina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Análise de Mobilidade Urbana - Teresina</h1>
+    </header>
+    <main>
+        <section id="analysis">
+            <h2>Análise de Passageiros por Bairro</h2>
+            <button id="analyzeButton">Gerar Análise e Gráfico</button>
+            <div id="results">
+                <h3>Gráfico:</h3>
+                <img id="plotImage" src="#" alt="Gráfico de Passageiros por Bairro" style="display:none; max-width: 100%;">
+                <p id="plotLinkContainer" style="display:none;">
+                    Link para o gráfico: <a id="plotLink" href="#" target="_blank">Acessar Gráfico</a>
+                </p>
+                <h3>Dados:</h3>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Bairro</th>
+                            <th>Total de Passageiros</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+            <div id="loading" style="display:none;">
+                <p>Processando...</p>
+            </div>
+            <div id="error" style="display:none; color: red;">
+                <p id="errorMessage"></p>
+            </div>
+        </section>
+        </main>
+    <footer>
+        <p>&copy; Projeto de Mobilidade Urbana - 2025</p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

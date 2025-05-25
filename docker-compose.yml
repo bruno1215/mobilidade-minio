@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000" # Expõe a porta 5000 do container para a porta 5000 do host
+    volumes:
+      - ./backend:/app # Monta o diretório backend local para desenvolvimento rápido
+      - ./backend/data:/app/data # Se o CSV estiver em backend/data
+    environment:
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=admin123
+      - DATABASE_URL=postgresql://userdev:passdev@db:5432/mobilidb # Exemplo para PostgreSQL
+    depends_on:
+      - minio
+      - db # Dependência do serviço de banco de dados
+    networks:
+      - app-network
+
+  minio:
+    image: minio/minio:RELEASE.2023-09-07T02-05-02Z # Use uma tag estável
+    ports:
+      - "9000:9000"  # Porta para a API do MinIO
+      - "9001:9001"  # Porta para o Console do MinIO
+    volumes:
+      - ./minio-data:/data # Persistência dos dados do MinIO
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=admin123
+    command: server /data --console-address ":9001"
+    networks:
+      - app-network
+
+  db: # Exemplo com PostgreSQL
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data # Persistência
+    environment:
+      - POSTGRES_USER=userdev
+      - POSTGRES_PASSWORD=passdev
+      - POSTGRES_DB=mobilidb
+    networks:
+      - app-network
+
+  frontend: # Exemplo básico servindo HTML estático com Nginx
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile # Crie este Dockerfile simples para o frontend
+    ports:
+      - "8080:80" # Expõe o frontend na porta 8080 do host
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

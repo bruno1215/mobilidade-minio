@@ -1,0 +1,10 @@
+body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+header { background-color: #333; color: #fff; padding: 1em 0; text-align: center; }
+main { padding: 20px; max-width: 900px; margin: 20px auto; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+button { padding: 10px 15px; background-color: #5cb85c; color: white; border: none; cursor: pointer; border-radius: 4px; }
+button:hover { background-color: #4cae4c; }
+#results img { margin-top: 10px; border: 1px solid #ddd; }
+#dataTable { width: 100%; margin-top: 20px; border-collapse: collapse; }
+#dataTable th, #dataTable td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+#dataTable th { background-color: #f0f0f0; }
+footer { text-align: center; padding: 10px; background-color: #333; color: #fff; margin-top: 20px; }
